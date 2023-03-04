@@ -1,0 +1,23 @@
+<p>product-component works!</p>
+{{ name }} <!---Interpolation -->
+<button (click)="f()">test</button> <!--eventbinding-->
+<input [value]="test"><!--property bindiing-->
+***********************************************************
+p : <input [value]="p" (keyup)="getp(ref.value)" #ref> {{p}}
+Price : <input [(ngModel)]="price" > {{price}}
+<ul>
+    <div  *ngFor="let p of listproducts">
+    <li *ngIf="p.price < price">
+        
+        {{p.id}} ** {{p.title}} ** {{p.quantity}} ** 
+        {{p.like}}** {{p.price}}
+        <button [disabled]="p.quantity == 0" 
+        (click)="buyP(p)">Buy-disabled</button>
+        <button [hidden]="p.quantity == 0" 
+        (click)="buyP(p)">Buy-hidden</button>
+        <button *ngIf="p.quantity > 0" 
+        (click)="buyP(p)">Buy-ngIf</button>
+        <button (click)="likeP(p)">Like</button>
+    </li>
+</div>
+</ul>
