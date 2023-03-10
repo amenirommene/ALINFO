@@ -9,8 +9,8 @@ p : <input [value]="p" (keyup)="getp(ref.value)" #ref> {{p}}
 Price : <input [(ngModel)]="price" > {{price}}
 <ul>
     <div  *ngFor="let p of listproducts">
-    <li *ngIf="p.price < price">
-        
+   <li *ngIf="p.price < price"> 
+     
         {{p.id}} ** {{p.title}} ** {{p.quantity}} ** 
         {{p.like}}** {{p.price}}
         <button [disabled]="p.quantity == 0" 

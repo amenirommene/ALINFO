@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponentComponent } from './product-component/product-component.component';
@@ -23,7 +23,8 @@ import { AddProductComponent } from './add-product/add-product.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule // directive ngModel
+    FormsModule, // directive ngModel
+    HttpClientModule //pour utiliser le service HttpClient 
   ],
   providers: [],
   bootstrap: [AppComponent] //les composants de déclenchement (appelés dans le fichier index.html)

@@ -1,6 +1,9 @@
-<form>
+<form  #f="ngForm" (ngSubmit)="addP()">
+    <div ngModelGroup="autres" #sousgroup1="ngModelGroup">
+ <label>Price</label>  
+  <input type="text" name="price" required [(ngModel)]="p.price" #x="ngModel"> <br>
 <label>Title</label>
-<input type="text" name="title" required minlength="3" ngModel #title="ngModel">
+<input type="text" name="title" required minlength="3" [(ngModel)]="p.title" #title="ngModel">
 <div *ngIf="title.invalid">
     <div *ngIf="title.errors['required']">
         Title is required
@@ -9,20 +12,24 @@
         Il faut saisir au moins {{title.errors['minlength'].requiredLength }} lettres
         alors que vous avez écrit {{title.errors['minlength'].actualLength }} lettre(s)
     </div>
+</div>
 </div> 
 <br>
+<div [hidden]="sousgroup1.invalid">
 <label>Quantity</label>
-<input type="number" required min="0" name="qty" ngModel #q="ngModel">  <!--pattern=[0-9]*-->
+<input type="number" required min="0" name="qty" [(ngModel)]="p.quantity" #q="ngModel">  <!--pattern=[0-9]*-->
 <div *ngIf="q.invalid && q.touched">
     <div *ngIf="q.errors['required']"> Quantity is required</div>
    
     <div *ngIf="q.errors['min']">Quantity must be > 0</div>
 </div>
-
+</div>
 {{q.valid}}
 <br>
-<button type="submit">Save</button>
+<button type="submit" [disabled]="f.invalid">Save</button>
 </form>
+********form***********<br>
+{{f.touched}} ** {{f.valid}} ** {{f.dirty}}<br>
 ****Valide********
 title : {{title.valid}} ** {{title.invalid}} <br>
 quantity : {{q.valid}} <br>
