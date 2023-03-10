@@ -1,4 +1,6 @@
 <p>product-component works!</p>
+<a routerLink="/details">Sous Lien </a>
+<a routerLink="details">Sous Lien avec concaténation</a>
 {{ name }} <!---Interpolation -->
 <button (click)="f()">test</button> <!--eventbinding-->
 <input [value]="test"><!--property bindiing-->
@@ -21,3 +23,5 @@ Price : <input [(ngModel)]="price" > {{price}}
     </li>
 </div>
 </ul>
+
+<router-outlet></router-outlet>

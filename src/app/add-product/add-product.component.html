@@ -1,0 +1,32 @@
+<form>
+<label>Title</label>
+<input type="text" name="title" required minlength="3" ngModel #title="ngModel">
+<div *ngIf="title.invalid">
+    <div *ngIf="title.errors['required']">
+        Title is required
+    </div>
+    <div *ngIf="title.errors['minlength']">
+        Il faut saisir au moins {{title.errors['minlength'].requiredLength }} lettres
+        alors que vous avez écrit {{title.errors['minlength'].actualLength }} lettre(s)
+    </div>
+</div> 
+<br>
+<label>Quantity</label>
+<input type="number" required min="0" name="qty" ngModel #q="ngModel">  <!--pattern=[0-9]*-->
+<div *ngIf="q.invalid && q.touched">
+    <div *ngIf="q.errors['required']"> Quantity is required</div>
+   
+    <div *ngIf="q.errors['min']">Quantity must be > 0</div>
+</div>
+
+{{q.valid}}
+<br>
+<button type="submit">Save</button>
+</form>
+****Valide********
+title : {{title.valid}} ** {{title.invalid}} <br>
+quantity : {{q.valid}} <br>
+****touched*********<br>
+title : {{title.touched}} ** {{title.untouched}} <br>
+*******pristine: on a rien écrit /dirty : on a écrit dans le champ*****
+<br>title : {{title.pristine}} *** {{title.dirty}}
