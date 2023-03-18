@@ -11,7 +11,11 @@ const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full" },
   {path:"home", component:HomeComponent},
   {path:"add", component:AddProductComponent},
+  //route paramétrée avec path param
+  //{path:"product/add/:id", component:AddProductComponent},
+  //il faut avoir un 2ème routeroutlet dans ProductComponentComponent
   {path:"product", component:ProductComponentComponent, children:[
+    {path:"add/:id", component:AddProductComponent},
     {path:"details", component:ProductDetailsComponent, children:[]}
   ]},
   {path:"details", component:ProductDetailsComponent},

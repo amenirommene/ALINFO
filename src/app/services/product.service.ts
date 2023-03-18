@@ -13,6 +13,9 @@ export class ProductService {
  //sous le nom de myHttp
   constructor(private myHttp:HttpClient) { }
 
+  getProductById(id:number) : Observable<Product>{
+  return this.myHttp.get<Product>(this.purl+"/"+id)
+  }
   getAllProduct():Observable<Product[]>{
    //utiliser le service HttpClient et plus précisément la méthode "get"
   return this.myHttp.get<Product[]>(this.purl);
@@ -20,5 +23,9 @@ export class ProductService {
   addProduct(p:Product):Observable<Product>{
     //utiliser le service HttpClient et plus précisément la méthode "post"
    return this.myHttp.post<Product>(this.purl,p);
+   }
+   updateProduct(p:Product):Observable<Product>{
+    //utiliser le service HttpClient et plus précisément la méthode "post"
+   return this.myHttp.put<Product>(this.purl+"/"+p.id,p);
    }
 }

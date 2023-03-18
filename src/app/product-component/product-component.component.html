@@ -20,6 +20,7 @@ Price : <input [(ngModel)]="price" > {{price}}
         <button *ngIf="p.quantity > 0" 
         (click)="buyP(p)">Buy-ngIf</button>
         <button (click)="likeP(p)">Like</button>
+        <a [routerLink]="['add',p.id]">Update</a>
     </li>
 </div>
 </ul>
